@@ -24,11 +24,7 @@ class UserController {
             };
             await user.save();
             await emailManager.enviarCorreoRestablecimiento(email, user.first_name, token);
-            swal.fire({
-                title: "Se envio el email!",
-                text: "Revisa tu correo porfavor.",
-                icon: "success"
-              });
+            return res.redirect('/password');
         } catch (error) {
             console.error(error);
             res.status(500).send("Error interno del servidor");
